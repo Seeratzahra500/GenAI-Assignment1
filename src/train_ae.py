@@ -2,7 +2,12 @@ import json, numpy as np, torch, optuna, wandb
 from torch.utils.data import DataLoader
 from pytorch_msssim import ssim
 from src.data import *
-from src.models import ConvAE, restoration_loss
+from src.models import ConvAE, ConvAE2, restoration_loss
+
+def build_model(cfg):
+    if "latent_ch" in cfg:
+        return ConvAE2(cfg["base"], cfg["latent_ch"], cfg["dropout"], cfg.get("skip_ch", 0))
+    return ConvAE(cfg["base"], cfg["bottleneck"], cfg["dropout"])
 
 ROOT = "/kaggle/working/GenAI-Assignment1"
 dev = "cuda" if torch.cuda.is_available() else "cpu"
@@ -37,7 +42,7 @@ def train(cfg, epochs, trial=None, run=None, ckpt=None):
     tl = DataLoader(PetDataset(imgs, tr), batch_size=cfg["batch_size"], shuffle=True,
                     num_workers=2, drop_last=True)
     vl = DataLoader(PetDataset(imgs, manifest=val_m), batch_size=128, num_workers=2)
-    model = ConvAE(cfg["base"], cfg["bottleneck"], cfg["dropout"]).to(dev)
+    model = build_model(cfg).to(dev)
     opt = torch.optim.Adam(model.parameters(), lr=cfg["lr"])
     sched = torch.optim.lr_scheduler.CosineAnnealingLR(opt, epochs)
     best = -1.0

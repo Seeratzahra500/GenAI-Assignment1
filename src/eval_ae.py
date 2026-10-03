@@ -4,13 +4,13 @@ from torch.utils.data import DataLoader
 from pytorch_msssim import ssim
 from src.data import *
 from src.models import ConvAE
-from src.train_ae import psnr_batch, ROOT
+from src.train_ae import psnr_batch, ROOT, build_model
 
 dev = "cuda" if torch.cuda.is_available() else "cpu"
 SEV = ["none", "low", "medium", "high"]
 
 def load_model(path, cfg):
-    m = ConvAE(cfg["base"], cfg["bottleneck"], cfg["dropout"]).to(dev)
+    m = build_model(cfg).to(dev)
     m.load_state_dict(torch.load(path, map_location=dev))
     return m.eval()
 
