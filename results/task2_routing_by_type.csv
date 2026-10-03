@@ -1,0 +1,5 @@
+type,oracle_ssim,oracle_psnr,pred_ssim,pred_psnr,in_ssim
+blur,0.7805,22.6063,0.7805,22.6078,0.8438
+clean,1.0,,0.9976,,1.0
+occlusion,0.6808,20.1037,0.6819,20.1274,0.7398
+salt,0.7675,22.497,0.7675,22.497,0.3667
