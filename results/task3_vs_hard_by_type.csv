@@ -1,0 +1,5 @@
+type,soft_warmup_ssim,soft_joint_ssim,hard_pred_ssim,input_ssim,soft_warmup_psnr,soft_joint_psnr,hard_pred_psnr
+blur,0.7833,0.7814,0.7805,0.8438,22.733,22.6878,22.6078
+clean,0.9982,0.9981,0.9976,1.0,,,
+occlusion,0.693,0.69,0.6819,0.7398,20.2604,20.2452,20.1274
+salt,0.7677,0.7665,0.7675,0.3667,22.506,22.4772,22.497

@@ -1,0 +1,11 @@
+type,severity,w_identity,w_salt,w_blur,w_occlusion
+clean,none,0.9741,0.001,0.0158,0.0092
+salt,low,0.0006,0.9974,0.0006,0.0013
+salt,medium,0.0005,0.998,0.0005,0.001
+salt,high,0.0006,0.9977,0.0006,0.0012
+blur,low,0.0132,0.0007,0.9846,0.0016
+blur,medium,0.0072,0.0006,0.9909,0.0014
+blur,high,0.009,0.0008,0.9886,0.0017
+occlusion,low,0.1056,0.0051,0.0078,0.8815
+occlusion,medium,0.0078,0.0012,0.001,0.99
+occlusion,high,0.0005,0.0003,0.0002,0.9989

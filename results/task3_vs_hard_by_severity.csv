@@ -1,0 +1,11 @@
+type,severity,soft_joint_ssim,hard_pred_ssim,soft_joint_psnr,hard_pred_psnr
+blur,high,0.7628,0.7644,22.5606,22.5278
+blur,low,0.7915,0.7885,22.7319,22.5852
+blur,medium,0.79,0.7886,22.771,22.7103
+clean,none,0.9981,0.9976,,
+occlusion,high,0.6329,0.6372,19.0018,19.0212
+occlusion,low,0.7531,0.7229,21.5196,21.1437
+occlusion,medium,0.6839,0.6856,20.2143,20.2174
+salt,high,0.7542,0.7563,22.3535,22.3913
+salt,low,0.7754,0.776,22.544,22.5723
+salt,medium,0.7701,0.7702,22.534,22.5275
