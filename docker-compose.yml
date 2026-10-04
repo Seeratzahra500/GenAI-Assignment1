@@ -1,0 +1,27 @@
+# Start everything:  docker compose up --build   then open http://localhost:3000
+services:
+  backend:
+    build: ./app/backend
+    environment:
+      MODELS_REPO: ${MODELS_REPO:-}
+      MODELS_DIR: /models
+      ORT_THREADS: ${ORT_THREADS:-2}
+    volumes:
+      - ./models:/models          # ONNX files are downloaded here on first start and reused afterwards
+    ports:
+      - "8000:8000"               # API docs: http://localhost:8000/docs
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health')"]
+      interval: 15s
+      timeout: 5s
+      retries: 40
+      start_period: 180s          # the first start downloads about 435 MB of models
+    restart: unless-stopped
+
+  frontend:
+    build: ./app/frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    restart: unless-stopped

@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body { @apply bg-canvas text-ink font-sans antialiased; font-variant-numeric: tabular-nums; }
+  :focus-visible { @apply outline-2 outline-offset-2 outline-teal; outline-style: solid; }
+  button { @apply cursor-pointer; }
+  button:disabled { @apply cursor-not-allowed; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
